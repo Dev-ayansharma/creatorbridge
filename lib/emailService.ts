@@ -10,15 +10,22 @@ const createtransport = nodemailer.createTransport({
 })
 
 export async function sendOTPEmail(email: string, otp: string) {
-  await createtransport.sendMail({
-    from: `"CreatorBridge" <${process.env.BREVO_USER}>`,
-    to: email,
-    subject: "Verify Your Email",
-    html: `
-      <h2>Email Verification</h2>
-      <p>Your OTP is:</p>
-      <h1>${otp}</h1>
-      <p>This OTP expires in 10 minutes.</p>
-    `
-  });
+try {
+       await createtransport.sendMail({
+        from: `"CreatorBridge" <${process.env.BREVO_USER}>`,
+        to: email,
+        subject: "Verify Your Email",
+        html: `
+          <h2>Email Verification</h2>
+          <p>Your OTP is:</p>
+          <h1>${otp}</h1>
+          <p>This OTP expires in 10 minutes.</p>
+        `
+      });
+
+          return { success: true, message: "Verification email sent successfully" };
+} catch (error) {
+      console.error("Email sending failed:", error);
+    return { success: false, message: "Failed to send verification email" };
+}
 }
