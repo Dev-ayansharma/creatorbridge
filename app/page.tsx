@@ -2,7 +2,8 @@ import { SmoothScroll } from "@/components/smooth-scroll"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { LogoMarquee } from "@/components/logo-marquee"
-import { BentoGrid } from "@/components/bento-grid"
+
+import {TimelineDemo} from "@/components/timeline-demo"
 import { Pricing } from "@/components/pricing"
 import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
@@ -14,7 +15,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <LogoMarquee />
-        <BentoGrid />
+        <TimelineDemo />
         <Pricing />
         <FinalCTA />
         <Footer />

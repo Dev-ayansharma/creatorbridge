@@ -4,10 +4,10 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 
 const footerLinks = {
-  Product: ["Features", "Pricing", "Changelog", "Roadmap", "API"],
-  Resources: ["Documentation", "Guides", "Blog", "Community", "Templates"],
-  Company: ["About", "Careers", "Press", "Partners", "Contact"],
-  Legal: ["Privacy", "Terms", "Security", "Cookies", "Licenses"],
+  Product: ["Features", "Pricing",],
+  Resources: ["Documentation"],
+  Company: ["Contact"],
+  Legal: [ "Licenses"],
 }
 
 export function Footer() {
@@ -27,11 +27,11 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
-                <span className="text-zinc-950 font-bold text-sm">A</span>
+                <span className="text-zinc-950 font-bold text-sm">||</span>
               </div>
-              <span className="font-semibold text-white">Apex</span>
+              <span className="font-semibold text-white">CreatorBridge</span>
             </a>
-            <p className="text-sm text-zinc-500 mb-4">The modern platform for teams who ship fast.</p>
+            <p className="text-sm text-zinc-500 mb-4">The modern platform for Creators.</p>
             {/* System Status */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">
               <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-glow" />

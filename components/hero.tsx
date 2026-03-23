@@ -4,6 +4,9 @@ import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {Spotlight} from "@/components/ui/spotlight-new"
+
+import { AnimatedTooltipPreview } from "./animatedtooltip"
+import Link from "next/link"
 const avatars = [
   "/professional-headshot-1.png",
   "/professional-headshot-2.png",
@@ -87,50 +90,28 @@ without sharing channel access.
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
+          <Link href="/auth">
           <Button
             size="lg"
             className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-full px-8 h-12 text-base font-medium shadow-lg shadow-white/10"
           >
             Start
             <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
+          </Button></Link>
+          <Link href="#Howitworks">
           <Button
             variant="outline"
             size="lg"
             className="rounded-full px-8 h-12 text-base font-medium border-zinc-800 text-zinc-300 hover:bg-zinc-900 hover:text-white hover:border-zinc-700 bg-transparent"
           >
             See How it works
-          </Button>
+          </Button></Link>
         </motion.div>
 
         {/* Social Proof */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex flex-col items-center gap-4"
-        >
-          <div className="flex items-center -space-x-3">
-            {avatars.map((avatar, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.5, x: -20 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
-                className="relative"
-              >
-                <img
-                  src={avatar || "/placeholder.svg"}
-                  alt=""
-                  className="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover"
-                />
-              </motion.div>
-            ))}
-          </div>
-          <p className="text-sm text-zinc-500">
-           Trusted by growing creators and editing teams
-          </p>
-        </motion.div>
+        
+        <AnimatedTooltipPreview/>
+       
       </div>
     </section>
   )

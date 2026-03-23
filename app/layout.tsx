@@ -22,9 +22,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Apex - Enterprise SaaS Platform",
-  description: "The modern platform for teams who ship fast. Built for scale, designed for speed.",
-    generator: 'v0.app'
+  title: "CreatorBridge - A Creators Platform",
+  description: "The modern platform for editors and youtube owners.",
+    generator: 'ayansharma.app'
 }
 
 export default function RootLayout({
