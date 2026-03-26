@@ -107,7 +107,7 @@ export default function Roleselect() {
 
         {/* Buttons */}
         <div className="mt-14 flex flex-col items-center gap-4">
-          <Link onClick={()=>setRole(role)} href={`/${role === "owner" ? "auth/sign-in" : "auth/sign-up"}`}>
+          <Link onClick={()=>setRole(role)} href={`/${role === "owner" ? `auth/${role}/sign-in` : `auth/${role}/sign-up`}`}>
           <button className="bg-white text-black px-8 py-3 rounded-md text-xs tracking-widest font-semibold hover:opacity-90 active:scale-95 transition">
             CONTINUE TO DASHBOARD
           </button></Link>

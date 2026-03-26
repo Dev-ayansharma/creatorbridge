@@ -22,7 +22,7 @@ async function dbConnect(): Promise<void> {
         return;
     }
    try {
-      const db = await mongoose.connect(databaseuri || "",{});
+      const db = await mongoose.connect(databaseuri,{});
       console.log("Hello")
       connection.isconnected = db.connections[0].readyState
       console.log("Connected Database");

@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Manrope, Space_Grotesk, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-
+import { Toaster } from "@/components/ui/sonner"
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
@@ -37,6 +37,7 @@ export default function RootLayout({
       <body className={`${manrope.variable} ${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}>
         <div className="noise-overlay" aria-hidden="true" />
         {children}
+        <Toaster/>
         <Analytics />
       </body>
     </html>

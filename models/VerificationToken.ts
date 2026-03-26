@@ -1,14 +1,14 @@
 // models/VerificationToken.ts
 import mongoose, { Document, Schema } from "mongoose";
 
-export interface IVerificationToken extends Document {
+export interface VerificationToken extends Document {
   email: string;
   otp: string;
   expires_at: Date;
   createdAt:Date
 }
 
-const verificationTokenSchema = new Schema<IVerificationToken>({
+const verificationTokenSchema = new Schema<VerificationToken>({
   email: { type: String, required: true },
   otp: { type: String, required: true },
   expires_at: { type: Date, required: true },
@@ -17,7 +17,8 @@ const verificationTokenSchema = new Schema<IVerificationToken>({
 
 }});
 
-export default mongoose.model<IVerificationToken>(
-  "VerificationToken",
-  verificationTokenSchema
-);
+const VerifyToken =
+  (mongoose.models.VerifyToken as mongoose.Model<VerificationToken>) ||
+  mongoose.model<VerificationToken>("VerifyToken", verificationTokenSchema);
+
+export default VerifyToken;

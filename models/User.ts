@@ -2,10 +2,10 @@
 import mongoose, { Document, Schema } from "mongoose";
 import { UserRole, AuthProvider } from "@/types/enum"
 
-export interface IUser extends Document {
+export interface User extends Document {
   username: string;
   email: string;
-  passwordHash?: string;
+  password?: string;
   role: UserRole;
   isVerified: boolean;
   profilePic?: string;
@@ -14,11 +14,11 @@ export interface IUser extends Document {
 
 }
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<User>(
   {
     username: { type: String, required: true, unique:true },
     email: { type: String, required: true, unique: true },
-    passwordHash: { type: String },
+    password: { type: String },
     role: { type: String, enum: Object.values(UserRole), required: true },
     isVerified: { type: Boolean, default: false },
     profilePic: { type: String },
@@ -30,5 +30,6 @@ const userSchema = new Schema<IUser>(
   },
   { timestamps: { createdAt: true, updatedAt: false } }
 );
+const User=(mongoose.models.User as mongoose.Model<User>) || mongoose.model<User>("User", userSchema);
 
-export default mongoose.model<IUser>("User", userSchema);
+export default User; 

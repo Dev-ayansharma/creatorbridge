@@ -2,7 +2,7 @@ import dbConnect from "@/lib/dbConnect";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import VerificationToken from "@/models/VerificationToken";
+import VerifyToken from "@/models/VerificationToken";
 
 import { sendOTPEmail } from "@/lib/emailService";
 export async function POST(request:Request) {
@@ -16,7 +16,7 @@ export async function POST(request:Request) {
         }
 
         const existinguserbyemail=await User.findOne({email})
-         const verificationtoken = await VerificationToken.findOne({email})
+         const verificationtoken = await VerifyToken.findOne({email})
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
      if (existinguserbyemail && verificationtoken){
@@ -29,7 +29,7 @@ export async function POST(request:Request) {
        } else{
           
            const hashedpassword=await bcrypt.hash(password,10)
-           existinguserbyemail.passwordHash=hashedpassword
+           existinguserbyemail.password=hashedpassword
            verificationtoken.otp= otp
            verificationtoken.expires_at=new Date(Date.now()+24*60*60*1000)
            existinguserbyemail.isVerified=false
@@ -45,9 +45,11 @@ export async function POST(request:Request) {
             email,
             password:hashedpassword,
             isVerified:false,
+            provider:"CREDENTIALS",
+            role:"EDITOR"
             })
             await newuser.save()
-        const token =  new VerificationToken({
+        const token =  new VerifyToken({
         otp,
         expires_at:expirydate,
         email
@@ -77,7 +79,7 @@ if (!emailresponse.success){
 )
     } catch (error) {
            return NextResponse.json(
-      { success: false, message: "Server error" },
+      { success: false, message: "Server error",err:error },
       { status: 500 }
     );
     }
