@@ -55,14 +55,14 @@ export default function VerifyAccount() {
   const onSubmit = async (data: z.infer<typeof verifySchema>) => {
     setIsSubmitting(true);
     try {
-      await axios.post<ApiResponse>(`/api/verifycode`, {
+      await axios.post<ApiResponse>(`/api/editor/verifycode`, {
         username: params.username,
         code: data.otp,
       });
 
       toast.success("Verified successfully");
 
-      router.replace("/auth/login");
+      router.replace(`/auth/${params.username}/login`);
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       toast.error(

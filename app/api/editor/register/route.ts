@@ -15,7 +15,11 @@ export async function POST(request:Request) {
         { status: 400 })
         }
 
+
         const existinguserbyemail=await User.findOne({email})
+        if (existinguserbyemail && existinguserbyemail.provider === "GOOGLE") {
+  return  NextResponse.json({success:false,message:"the user with this email already exist "},{status:400})
+}
          const verificationtoken = await VerifyToken.findOne({email})
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
 

@@ -14,13 +14,13 @@ import axios, { AxiosError } from "axios"
 import { ApiResponse } from '@/types/ApiResponse';
 import * as z from 'zod'
 import { Loader2 } from 'lucide-react'
-
+import Link from 'next/link';
 export default function SignUp() {
   const [username, setUsername] = useState('')
   const [usernamemssg, setUsernamemssg] = useState('')
   const [ischeckingusername, setIscheckingusername] = useState(false)
   const [issubmitting, setIssubmitting] = useState(false)
-
+  
   const debounced = useDebounceCallback(setUsername, 300)
   const router = useRouter()
 
@@ -58,11 +58,11 @@ export default function SignUp() {
     setIssubmitting(true)
 
     try {
-      const response = await axios.post<ApiResponse>("/api/auth/register", data)
+      const response = await axios.post<ApiResponse>("/api/editor/register", data)
       setUsernamemssg(response.data.message)
       toast.success(response.data.message)
 
-      router.replace(`/verify/${data.username}`)
+      router.replace(`/auth/editor/sign-up/verify/${data.username}`)
     } catch (error) {
       const axioserror = error as AxiosError<ApiResponse>
       toast.error(axioserror.response?.data.message ?? "Signup failed")
@@ -172,10 +172,10 @@ export default function SignUp() {
                 "Verify →"
               )}
             </button>
-
+ <Link href= "/auth/editor/login">
             <p className="text-center text-xs text-white/40">
-              ALREADY SIGNED-IN
-            </p>
+              ALREADY REGISTERED
+            </p></Link>
 
           </form>
         </div>

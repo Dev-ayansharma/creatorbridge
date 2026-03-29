@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
+import Link from "next/link"
 const navItems = [
   { label: "Pricing", href: "#pricing" },
   { label: "How it works", href: "#Howitworks" },
@@ -60,12 +60,14 @@ export function Navbar() {
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-3">
+          <Link href={'/auth'}>
           <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-white hover:bg-zinc-800">
             Sign In
-          </Button>
+          </Button></Link>
+          <Link href={'/auth'}>
           <Button size="sm" className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-full px-4">
             Get Started
-          </Button>
+          </Button></Link>
         </div>
 
         {/* Mobile Menu Button */}

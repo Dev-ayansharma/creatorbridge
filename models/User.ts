@@ -3,20 +3,23 @@ import mongoose, { Document, Schema } from "mongoose";
 import { UserRole, AuthProvider } from "@/types/enum"
 
 export interface User extends Document {
-  username: string;
+  username?: string;
   email: string;
   password?: string;
   role: UserRole;
-  isVerified: boolean;
+  isVerified?: boolean;
   profilePic?: string;
   provider: AuthProvider;
+  googleid?:string;
+  accesstoken:string;
+  refreshtoken:string;
   createdAt: Date;
 
 }
 
 const userSchema = new Schema<User>(
   {
-    username: { type: String, required: true, unique:true },
+    username: { type: String, unique:true },
     email: { type: String, required: true, unique: true },
     password: { type: String },
     role: { type: String, enum: Object.values(UserRole), required: true },
@@ -27,6 +30,9 @@ const userSchema = new Schema<User>(
       enum: Object.values(AuthProvider),
       required: true,
     },
+    googleid:{type:String},
+    accesstoken:{type:String},
+    refreshtoken:{type:String},
   },
   { timestamps: { createdAt: true, updatedAt: false } }
 );
