@@ -4,6 +4,7 @@ import { Manrope, Space_Grotesk, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
+import { AuthProvider } from "@/context/AuthContext"
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
@@ -36,9 +37,11 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${manrope.variable} ${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}>
         <div className="noise-overlay" aria-hidden="true" />
+        <AuthProvider>
         {children}
         <Toaster/>
         <Analytics />
+</AuthProvider>
       </body>
     </html>
   )

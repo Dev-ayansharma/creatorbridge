@@ -11,7 +11,7 @@ export function TimelineDemo() {
     ],
     content: (images: string[]) => (
       <div>
-        <p className="mb-8 text-xs md:text-sm text-neutral-800 dark:text-neutral-200">
+        <p className="mb-8 text-xs md:text-sm text-neutral-200">
           The editor uploads the edited video directly to the platform along with
           title, description, tags, and thumbnail — no need to send files manually.
         </p>
@@ -39,7 +39,7 @@ export function TimelineDemo() {
     ],
     content: (images: string[]) => (
       <div>
-        <p className="mb-8 text-xs md:text-sm text-neutral-800 dark:text-neutral-200">
+        <p className="mb-8 text-xs md:text-sm text-neutral-200">
           The owner receives a notification and reviews the video inside the platform.
           They can check details, preview content, and decide whether to approve or reject it.
         </p>
@@ -67,12 +67,12 @@ export function TimelineDemo() {
     ],
     content: (images: string[]) => (
       <div>
-        <p className="mb-4 text-xs md:text-sm text-neutral-800 dark:text-neutral-200">
+        <p className="mb-4 text-xs md:text-sm text-neutral-200">
           Once approved, the platform uploads the video directly to the owner's YouTube
           channel — securely and instantly.
         </p>
 
-        <div className="mb-6 space-y-2 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
+        <div className="mb-6 space-y-2 text-xs md:text-sm text-neutral-300">
           <div>✅ No need to download/upload again</div>
           <div>✅ No sharing YouTube credentials</div>
           <div>✅ Faster and secure workflow</div>

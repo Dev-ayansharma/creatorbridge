@@ -52,12 +52,12 @@ export default function Roleselect() {
             <h3 className="text-lg font-semibold mb-2">Editor</h3>
 
             <p className="text-white/60 text-xs mb-6">
-              Perfect for creating and managing content within specific project branches.
+              start your effortless submitting the work.
             </p>
 
             <div className="flex gap-2 text-[10px] uppercase">
               <span className="px-2 py-1 border border-white/10 rounded-full text-white/60">
-                Read/Write
+                Upload
               </span>
               <span className="px-2 py-1 border border-white/10 rounded-full text-white/60">
                 Publishing
@@ -90,7 +90,7 @@ export default function Roleselect() {
             <h3 className="text-lg font-semibold mb-2">Owner</h3>
 
             <p className="text-white/60 text-xs mb-6">
-              Full administrative access to all projects, billing, and organization settings.
+              Full access and no overhead of security.
             </p>
 
             <div className="flex gap-2 text-[10px] uppercase">
@@ -98,7 +98,7 @@ export default function Roleselect() {
                 Full Access
               </span>
               <span className="px-2 py-1 border border-white/10 rounded-full text-white/60">
-                Billing
+                Security
               </span>
             </div>
           </div>
@@ -111,10 +111,10 @@ export default function Roleselect() {
           <button className="bg-white text-black px-8 py-3 rounded-md text-xs tracking-widest font-semibold hover:opacity-90 active:scale-95 transition">
             CONTINUE TO DASHBOARD
           </button></Link>
-
+       <Link href={'/'}>
           <button className="text-white/50 text-xs tracking-widest hover:text-white transition">
-            BACK TO AUTHENTICATION
-          </button>
+            BACK TO HOME PAGE
+          </button></Link>
         </div>
       </main>
     </>

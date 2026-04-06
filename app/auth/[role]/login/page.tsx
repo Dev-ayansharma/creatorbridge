@@ -10,10 +10,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod"
+import Link from "next/link";
 export default function LogIn() {
 
-  const [email,setEmail] = useState('')
-  const [password,setPassword]= useState('')
   const [issubmitting,setIssubmitting]= useState(false)
     const router = useRouter()
   
@@ -220,11 +219,11 @@ export default function LogIn() {
                     "Verify →"
                   )}
                 </button>
-    
+    <Link href={'/auth/editor/sign-up'}>
                 <p className="text-center text-xs text-white/40">
                   ALREADY SIGNED-IN
                 </p>
-    
+    </Link>
               </form>
             </div>
           </div>

@@ -1,20 +1,21 @@
 // models/Workspace.ts
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-export interface IWorkspace extends Document {
+export interface Workspace extends Document {
   name: string;
-  owner_id: Types.ObjectId;
+  owner: Types.ObjectId;
   editor: Types.ObjectId;
   createdAt: Date;
 }
 
-const workspaceSchema = new Schema<IWorkspace>(
+const workspaceSchema = new Schema<Workspace>(
   {
     name: { type: String, required: true },
-    owner_id: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
     editor: { type: Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: { createdAt: true, updatedAt: false } }
 );
 
-export default mongoose.model<IWorkspace>("Workspace", workspaceSchema);
+const Workspace =  (mongoose.models.Workspace as mongoose.Model<Workspace>) || mongoose.model<Workspace>("Workspace", workspaceSchema);
+export default Workspace

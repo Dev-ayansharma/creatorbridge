@@ -15,6 +15,7 @@ export function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
+  
 
   return (
     <motion.header

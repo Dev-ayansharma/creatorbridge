@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     if (user.provider !== "CREDENTIALS") {
       return NextResponse.json(
-        { success: false, message: "Use Google login" },
+        { success: false, message: "It is already Used Google login" },
         { status: 400 }
       );
     }
