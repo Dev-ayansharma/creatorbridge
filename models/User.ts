@@ -14,6 +14,7 @@ export interface User extends Document {
   accesstoken:string;
   refreshtoken:string;
   createdAt: Date;
+  assigned:boolean;
 
 }
 
@@ -33,6 +34,7 @@ const userSchema = new Schema<User>(
     googleid:{type:String},
     accesstoken:{type:String},
     refreshtoken:{type:String},
+    assigned:{type:Boolean,default : false},
   },
   { timestamps: { createdAt: true, updatedAt: false } }
 );

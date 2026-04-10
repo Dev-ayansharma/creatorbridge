@@ -13,7 +13,8 @@ export async function GET(req:NextRequest) {
           })
          }
  
-     const workspaces = await Workspace.find({owner_id:user._id}).populate("editor", "username")
+     const workspaces = await Workspace.find({owner:user._id}).populate("editor", "username")
+    
      if(workspaces == undefined || null){
           return NextResponse.json({success:false,message:"db error is found"},{
              status:404
