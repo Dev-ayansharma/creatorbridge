@@ -11,11 +11,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod"
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 export default function LogIn() {
 
   const [issubmitting,setIssubmitting]= useState(false)
     const router = useRouter()
-  
+    const {refreshUser} = useAuth()
     const form = useForm<z.infer<typeof signInSchema>>({
       resolver: zodResolver(signInSchema),
       defaultValues: {
@@ -31,7 +32,7 @@ export default function LogIn() {
           const response = await axios.post<ApiResponse>("/api/editor/sign-in", data)
         
           toast.success(response.data.message)
-    
+          await refreshUser()
           router.replace(`/edashboard`)
         } catch (error) {
           const axioserror = error as AxiosError<ApiResponse>

@@ -1,24 +1,36 @@
-import Sidebar from "@/components/Sidebar";
-import Topbar from "@/components/Topbar";
+"use client";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+import Sidebar from "@/components/Sidebar";
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const COLLAPSED_W = 64;
+
   return (
     <>
       {/* Sidebar */}
       <Sidebar />
 
-      {/* Page shell */}
+      {/* Main Content */}
       <div
         style={{
-          marginLeft: 64,
-          display: "flex",
-          flexDirection: "column",
+          marginLeft: COLLAPSED_W, // 👈 reserve space for sidebar
+          width: `calc(100% - ${COLLAPSED_W}px)`, // 👈 prevent overflow
           minHeight: "100vh",
+          overflowX: "hidden", // 👈 kill horizontal scroll
         }}
       >
-       
-
-        <main style={{ flex: 1, overflowY: "auto" }}>
+        <main
+          style={{
+            height: "100vh",
+            overflowY: "auto",
+            overflowX: "hidden",
+            padding: "16px 24px",
+          }}
+        >
           {children}
         </main>
       </div>

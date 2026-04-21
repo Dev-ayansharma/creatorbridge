@@ -7,6 +7,7 @@ type User = {
   email: string;
   username?: string;
   role: "EDITOR" | "OWNER";
+  profilePic?:string;
 };
 
 type AuthContextType = {

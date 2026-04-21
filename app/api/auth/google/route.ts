@@ -11,9 +11,9 @@ export async function GET() {
       "openid",
       "email",
       "profile",
-      "https://www.googleapis.com/auth/youtube.upload",
+      "https://www.googleapis.com/auth/youtube",
     ].join(" "),
-    access_type: "offline",   // 🔥 for refresh token
+    access_type: "offline",   
     prompt: "consent",
   };
 

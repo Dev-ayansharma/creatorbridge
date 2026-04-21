@@ -5,6 +5,7 @@ import User from "@/models/User";
 
 import { NextResponse } from "next/server";
 import { URL } from "url";
+import YoutubeChannel from "@/models/YoutubeChannel";
 export async function GET(req: Request) {
   await dbConnect();
 
@@ -12,7 +13,7 @@ export async function GET(req: Request) {
   const code = searchParams.get("code");
 
   try {
-    // 1. Exchange code for tokens
+   
     const tokenRes = await axios.post(
       "https://oauth2.googleapis.com/token",
       {
@@ -24,8 +25,8 @@ export async function GET(req: Request) {
       }
     );
 
-    const { access_token, refresh_token } = tokenRes.data;
-
+    const { access_token, refresh_token,expires_in} = tokenRes.data;
+  
     // 2. Get user info
     const userInfo = await axios.get(
       "https://www.googleapis.com/oauth2/v2/userinfo",
@@ -37,11 +38,30 @@ export async function GET(req: Request) {
     );
 
     const { email, name, id, picture } = userInfo.data;
-
-    // 3. Find or create user
+    
+    // 🔥 STEP 2: Get YouTube channel
+    const ytRes = await axios.get(
+      "https://www.googleapis.com/youtube/v3/channels",
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+        params: {
+          part: "snippet",
+          mine: true,
+        },
+      }
+    );
+    
+       const channel = ytRes.data.items[0];
+    
     let user = await User.findOne({ email });
+  
+   
+
     if (user && user.provider === "CREDENTIALS") {
   return NextResponse.json({success:false,message:"this email already registered"},{status:400});
+
 }
     if (!user) {
       user = await User.create({
@@ -52,16 +72,32 @@ export async function GET(req: Request) {
         googleid: id,
         profilePic: picture,
       });
+
+  
+    }
+await user.save();
+      const ownerid = user?._id
+ let utubechannel  = await YoutubeChannel.findOne({owner_id:ownerid})
+    if(!utubechannel){
+    utubechannel = await YoutubeChannel.create({
+         access_token,
+         refresh_token,
+         token_expiry:new Date(Date.now() + expires_in * 1000),
+         youtube_channel_id:channel.id,
+         owner_id:ownerid,
+        uname:channel.snippet.title,
+        thumbnail: channel.snippet.thumbnails.default.url
+
+
+      })
     }
 
-    // 4. Save tokens (important for YouTube)
-    user.accesstoken = access_token;
-    if (refresh_token) {
-      user.refreshtoken = refresh_token;
-    }
-    await user.save();
-
-    // 5. Create JWT session (SAME as editor)
+  
+     utubechannel.access_token = access_token;
+    utubechannel.refresh_token = refresh_token;
+    utubechannel.token_expiry = new Date(Date.now() + expires_in * 1000);
+     
+     await utubechannel.save()
     const token = jwt.sign(
       {
         userId: user._id,
@@ -78,8 +114,9 @@ export async function GET(req: Request) {
       sameSite: "strict",
     });;
      return response
-
-  } catch (error) {
+    
+  } catch (error:any) {
+    console.error("error is ",error?.response?.data)
     return NextResponse.json({ message: "Google login failed" }, { status: 500 });
   }
 }

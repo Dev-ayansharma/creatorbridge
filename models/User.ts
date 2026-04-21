@@ -11,8 +11,7 @@ export interface User extends Document {
   profilePic?: string;
   provider: AuthProvider;
   googleid?:string;
-  accesstoken:string;
-  refreshtoken:string;
+
   createdAt: Date;
   assigned:boolean;
 
@@ -32,8 +31,7 @@ const userSchema = new Schema<User>(
       required: true,
     },
     googleid:{type:String},
-    accesstoken:{type:String},
-    refreshtoken:{type:String},
+
     assigned:{type:Boolean,default : false},
   },
   { timestamps: { createdAt: true, updatedAt: false } }

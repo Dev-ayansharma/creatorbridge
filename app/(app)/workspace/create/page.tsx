@@ -8,6 +8,7 @@ type Editor = {
   _id: string;
   username: string;
   email: string;
+  profilePic?:string
 };
 
 export default function CreateWorkspace() {
@@ -166,7 +167,7 @@ export default function CreateWorkspace() {
                         className="px-4 py-3 hover:bg-white/5 cursor-pointer flex items-center gap-3"
                       >
                         <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs">
-                          {editor.username[0].toUpperCase()}
+                          <img src={editor.profilePic} alt="profile" />
                         </div>
                         <span>{editor.username}</span>
                       </div>

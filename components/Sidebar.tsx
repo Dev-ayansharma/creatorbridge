@@ -9,22 +9,23 @@ import { toast } from "sonner";
 
 const navItems = [
   { label: "Dashboard", href: "/edashboard", icon: Icons.Dashboard },
-  { label: "Profile", href: "/profile", icon: Icons.Profile },
+  { label: "Profile", href: "/eprofile", icon: Icons.Profile },
   { label: "My Workspace", href: "/workspace", icon: Icons.Workspace },
 
 ];
 const navItems2 = [
   { label: "Dashboard", href: "/odashboard", icon: Icons.Dashboard },
-  { label: "Profile", href: "/profile", icon: Icons.Profile },
+  { label: "Profile", href: "/oprofile", icon: Icons.Profile },
   { label: "My Workspace", href: "/workspace", icon: Icons.Workspace },
   
 ];
 
-
+ 
 export default function Sidebar() {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState(false);
-  const {user,refreshUser} = useAuth()
+ const {user,refreshUser} = useAuth()
+ 
 const router = useRouter();
 
 const handleLogout = async () => {
@@ -243,7 +244,7 @@ const handleLogout = async () => {
               display: "flex", alignItems: "center", justifyContent: "center",
               flexShrink: 0,
             }}>
-              <Icons.UserAvatar />
+              <img src={user?.profilePic  } alt="profile" />
             </div>
             <div style={{
               opacity: expanded ? 1 : 0,

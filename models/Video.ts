@@ -2,7 +2,7 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 import { VideoStatus } from "@/types/enum";
 
-export interface IVideo extends Document {
+export interface Video extends Document {
   workspace_id: Types.ObjectId;
   uploaded_by: Types.ObjectId;
   title: string;
@@ -12,10 +12,12 @@ export interface IVideo extends Document {
   video_url: string;
   status: VideoStatus;
   youtube_video_id?: string;
+  privacystatus:string;
+  category:string;
   createdAt: Date;
 }
 
-const videoSchema = new Schema<IVideo>(
+const videoSchema = new Schema<Video>(
   {
     workspace_id: {
       type: Schema.Types.ObjectId,
@@ -38,8 +40,15 @@ const videoSchema = new Schema<IVideo>(
       default: VideoStatus.PENDING,
     },
     youtube_video_id: { type: String },
+    privacystatus:{
+      type:String
+    },
+    category:{
+      type:String
+    }
   },
   { timestamps: { createdAt: true, updatedAt: false } }
 );
 
-export default mongoose.model<IVideo>("Video", videoSchema);
+const Video =  (mongoose.models.Video as mongoose.Model<Video>) || mongoose.model<Video>("Video", videoSchema);
+  export default Video
