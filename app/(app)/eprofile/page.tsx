@@ -70,7 +70,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-neutral-900 text-white px-4 py-10">
+    <div className="min-h-screen bg-black text-white px-4 py-10">
       <div className="max-w-xl mx-auto">
 
         {/* HEADER */}

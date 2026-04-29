@@ -20,7 +20,9 @@ export default function DashboardLayout({
           marginLeft: COLLAPSED_W, // 👈 reserve space for sidebar
           width: `calc(100% - ${COLLAPSED_W}px)`, // 👈 prevent overflow
           minHeight: "100vh",
-          overflowX: "hidden", // 👈 kill horizontal scroll
+          overflowX: "hidden",
+          
+           // 👈 kill horizontal scroll
         }}
       >
         <main
@@ -29,6 +31,7 @@ export default function DashboardLayout({
             overflowY: "auto",
             overflowX: "hidden",
             padding: "16px 24px",
+            background: "#000000"
           }}
         >
           {children}

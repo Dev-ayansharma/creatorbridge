@@ -58,7 +58,7 @@ const handleLogout = async () => {
           position: "fixed",
           left: 0, top: 0, bottom: 0,
           width: expanded ? EXPANDED_W : COLLAPSED_W,
-          background: "#18191b",
+          background: "#000000",
           borderRight: "1px solid #262729",
           display: "flex",
           flexDirection: "column",

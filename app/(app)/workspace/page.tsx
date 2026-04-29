@@ -31,7 +31,7 @@ export default function WorkspacePage() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-black to-neutral-900 text-white px-4 sm:px-6 lg:px-10 py-6 sm:py-8">
+    <div className="min-h-screen w-full bg-black text-white px-4 sm:px-6 lg:px-10 py-6 sm:py-8">
 
       {/* HEADER */}
       <div className="mb-8 sm:mb-10">

@@ -10,7 +10,7 @@ export default function Topbar() {
       justifyContent: "flex-end",
       padding: "14px 28px",
       borderBottom: "1px solid #202123",
-      background: "#111213",
+      background: "#000000",
       gap: 10,
       position: "sticky",
       top: 0,

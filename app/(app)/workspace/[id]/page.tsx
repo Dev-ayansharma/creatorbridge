@@ -5,6 +5,8 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import UploadContent from "@/components/uploadcontent";
+import ContentDetails from "@/components/contentdetails";
+import { LoaderOne } from "@/components/ui/loader";
 
 export default function CheckVideo() {
   const params = useParams<{ id: string }>();
@@ -14,12 +16,14 @@ export default function CheckVideo() {
   const [video, setVideo] = useState<any>(null);
 
   const fetchVideo = async () => {
+    setLoading(true)
     try {
       const res = await axios.get("/api/video/read", {
-        params: { workspaceid: params.id },
+        params: { Id: params.id },
+        
       });
 
-      console.log(res.data.data)
+    
 
       if (res.data.success) {
         setVideo(res.data.data);
@@ -39,18 +43,19 @@ export default function CheckVideo() {
   }, []);
 
 
-  if (loading) {
-    return <p className="text-center mt-10">Loading...</p>;
+  if (loading || !user) {
+   return ( <div className="flex items-center justify-center min-h-screen bg-black">
+        <div className="flex flex-col items-center gap-4">
+    
+          <LoaderOne/>
+        </div>
+      </div>)
   }
 
 
   if (user?.role === "EDITOR") {
     return video ? (
-      <div className="text-center mt-10">
-        <p className="text-green-600 font-semibold">
-          Video already uploaded ✅
-        </p>
-      </div>
+         <ContentDetails data={video} role={user.role}/>
     ) : (
       <UploadContent workspaceId={params.id} />
     );
@@ -58,21 +63,8 @@ export default function CheckVideo() {
 
   // 🧑‍💼 OWNER VIEW
   if (user?.role === "OWNER") {
-    return video ? (
-      <div className="text-center mt-10">
-        <p className="font-semibold text-blue-600">
-          Review the uploaded video
-        </p>
-        {/* You can add buttons here */}
-        <div className="mt-4 flex justify-center gap-4">
-          <button className="px-4 py-2 bg-green-500 text-white rounded">
-            Accept
-          </button>
-          <button className="px-4 py-2 bg-red-500 text-white rounded">
-            Reject
-          </button>
-        </div>
-      </div>
+    return video  ? (
+      <ContentDetails data={video} role={user.role}/>
     ) : (
       <p className="text-center mt-10 text-gray-500">
         No video uploaded yet. Waiting for editor...

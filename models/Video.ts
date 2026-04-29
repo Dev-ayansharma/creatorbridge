@@ -9,6 +9,8 @@ export interface Video extends Document {
   description?: string;
   tags: string[];
   thumbnail_url?: string;
+  thumbnail_publicid?:string;
+  video_publicid:string;
   video_url: string;
   status: VideoStatus;
   youtube_video_id?: string;
@@ -33,6 +35,8 @@ const videoSchema = new Schema<Video>(
     description: { type: String },
     tags: [{ type: String }],
     thumbnail_url: { type: String },
+    thumbnail_publicid:{type:String},
+    video_publicid:{type:String},
     video_url: { type: String, required: true },
     status: {
       type: String,

@@ -11,9 +11,10 @@ export default function ProfilePage() {
   const fetchprofile = async () => {
     try {
       const res = await axios.get("/api/oprofile");
-
+      
       if (res.data.success) {
         setProfile(res.data.data);
+        console.log(res.data.data)
       } else {
         setProfile({});
       }
@@ -29,7 +30,7 @@ export default function ProfilePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-neutral-900 text-white px-4 sm:px-6 py-10">
+    <div className="min-h-screen bg-black text-white px-4 sm:px-6 py-10">
       <div className="max-w-xl mx-auto">
 
         {/* HEADER */}
@@ -57,7 +58,7 @@ export default function ProfilePage() {
               />
             )}
 
-          </div>
+          </div>  
 
           {/* USER INFO */}
           <div className="w-full">

@@ -27,12 +27,14 @@ export async function POST(req: NextRequest) {
     const privacytype = formData.get("privacy") as string
     const categorytype = formData.get("category") as string
     let thumbnailUrl = "";
+    let thumbnailPublicid = ""
     if (thumbnailFile) {
       const thumbBuffer = Buffer.from(await thumbnailFile.arrayBuffer());
     
       const thumbUpload: any = await uploadToCloudinary(thumbBuffer, "images","image");
       
       thumbnailUrl = thumbUpload.secure_url;
+      thumbnailPublicid = thumbUpload.public_id
     }
 
 
@@ -45,6 +47,8 @@ export async function POST(req: NextRequest) {
       thumbnail_url: thumbnailUrl,
       video_url: videoUpload.secure_url,
       status: "PENDING",
+      thumbnail_publicid:thumbnailPublicid,
+      video_publicid:videoUpload.public_id,
       privacystatus:privacytype,
       category:categorytype
 

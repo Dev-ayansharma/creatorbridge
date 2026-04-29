@@ -1,11 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Upload, Image as ImageIcon, X, Globe, Lock, Tag, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-
-export default function UploadContent({ workspaceId }: { workspaceId: string }) {
+type Props = {
+  workspaceId: string;
+  mode?: "create" | "edit";
+  initialData?: any;
+  videoId?: string;
+};
+export default function UploadContent({
+  workspaceId,
+  mode = "create",
+  initialData,
+  videoId,
+}: Props) {
   const [privacy, setPrivacy] = useState("public");
   const [tags, setTags] = useState<string[]>([]);
   const [inputTag, setInputTag] = useState("");
@@ -17,7 +27,15 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
+    useEffect(() => {
+    if (mode === "edit" && initialData) {
+      setTitle(initialData.title || "");
+      setDescription(initialData.description || "");
+      setCategory(initialData.category || "");
+      setPrivacy(initialData.privacy || "public");
+      setTags(initialData.tags || []);
+    }
+  }, [mode, initialData]);
   const categories = [
     { id: "1", name: "Film & Animation" },
     { id: "2", name: "Autos & Vehicles" },
@@ -44,6 +62,8 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
     setInputTag("");
     setVideoFile(null);
     setThumbnailFile(null);
+
+    router.back()
   };
 
   const addTag = () => {
@@ -58,8 +78,8 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
     setTags(tags.filter((t) => t !== tag));
   };
 
-  const handleUpload = async () => {
-    if (!videoFile) {
+  const handleSubmit = async () => {
+    if (mode === "create" && !videoFile) {
       toast.error("Please upload a video");
       return;
     }
@@ -68,31 +88,51 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
 
     try {
       const formData = new FormData();
-      formData.append("video", videoFile);
+
+      // Only append if exists (IMPORTANT for PATCH)
+      if (videoFile) formData.append("video", videoFile);
       if (thumbnailFile) formData.append("thumbnail", thumbnailFile);
-      formData.append("title", title);
-      formData.append("description", description);
+      if (title) formData.append("title", title);
+      if (description) formData.append("description", description);
+      if (category) formData.append("category", category);
+
       formData.append("workspace_id", workspaceId);
-      formData.append("tags", JSON.stringify(tags));
-      formData.append("category", category);
       formData.append("privacy", privacy);
+      formData.append("tags", JSON.stringify(tags));
 
-      const res = await fetch("/api/video/create", {
-        method: "POST",
-        body: formData,
-      });
+      if (mode === "edit") {
 
-      const data = await res.json();
+            const res = await fetch(`/api/video/update/${videoId}`, {
+              method: "PATCH",
+              body: formData,
+            });
+       
 
-      if (data.success) {
-        toast.success("Uploaded successfully");
-        resetForm();
-        window.location.reload()
+        const data = await res.json();
+
+        if (data.success) {
+          toast.success("Video updated successfully");
+          router.push("/edashboard");
+        } else {
+          toast.error(data.message || "Update failed");
+        }
       } else {
-        toast.error(data.message || "Upload failed");
+        const res = await fetch("/api/video/create", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          toast.success("Uploaded successfully");
+           router.push("/edashboard");
+        } else {
+          toast.error(data.message || "Upload failed");
+        }
       }
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -126,7 +166,7 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
     <div
       style={{
         minHeight: "100vh",
-        background: "#111213",
+        background: "#000000",
         color: "#f0f0f0",
         fontFamily: "'Geist', 'Inter', system-ui, sans-serif",
       }}
@@ -498,7 +538,7 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
           bottom: 0,
           left: 0,
           right: 0,
-          background: "#111213",
+          background: "#000000",
           borderTop: "1px solid #1e1f21",
           padding: "14px clamp(16px, 4vw, 32px)",
           paddingLeft: "max(64px, clamp(16px, 4vw, 32px))",
@@ -509,6 +549,7 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
           zIndex: 10,
         }}
       >
+
         <button
           className="cancel-btn"
           onClick={resetForm}
@@ -530,8 +571,9 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
         </button>
         <button
           className="submit-btn"
-          onClick={handleUpload}
+          onClick={handleSubmit}
           disabled={loading}
+
           style={{
             padding: "11px 28px",
             borderRadius: 8,
@@ -550,14 +592,16 @@ export default function UploadContent({ workspaceId }: { workspaceId: string }) 
             transition: "all 0.15s",
           }}
         >
-          {loading ? (
-            <>
-              <LoaderCircle size={15} className="spin" style={{ flexShrink: 0 }} />
-              Uploading...
-            </>
-          ) : (
-            "Save and Continue"
-          )}
+        {loading ? (
+  <>
+    <LoaderCircle size={15} className="spin" />
+    {mode === "edit" ? "Updating..." : "Uploading..."}
+  </>
+) : mode === "edit" ? (
+  "Update Video"
+) : (
+  "Save and Continue"
+)}
         </button>
       </div>
     </div>
