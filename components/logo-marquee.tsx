@@ -43,7 +43,7 @@ export function LogoMarquee() {
               key={index}
               className="flex items-center justify-center min-w-[160px] h-16 mx-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
             >
-              <div className="flex items-center gap-2 text-zinc-900">
+              <div className="flex items-center gap-2 text-white">
                 <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center">
                   <span className="text-xs font-bold">{logo.name[0]}</span>
                 </div>

@@ -83,7 +83,7 @@ export function Hero() {
           <Link href="/auth">
             <Button
               size="lg"
-              className="bg-black-500 text-white hover:bg-red-600 rounded-full px-8 h-12 text-base shadow-lg shadow-red-500/20 cursor-pointer"
+              className="bg-black-500 text-white hover:bg-white-600 hover:text-white rounded-full px-8 h-12 text-base  cursor-pointer"
             >
               Start
               <ArrowRight className="ml-2 w-4 h-4" />
