@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Icons } from "@/components/icons";
+
 
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden px-6">
 
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,0,0,0.12),transparent_40%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(188, 188, 188, 0.19),transparent_40%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
 
       {/* Content */}
       <motion.div
