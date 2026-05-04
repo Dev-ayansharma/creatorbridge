@@ -75,7 +75,7 @@ export function TimelineDemo() {
   ];
   return (
     <section id="Howitworks">
-    <div className="relative w-full overflow-clip">
+    <div className="relative w-full overflow-clip bg-black ">
       <Timeline data={data} />
     </div></section>
   );

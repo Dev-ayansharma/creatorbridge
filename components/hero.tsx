@@ -27,7 +27,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black pointer-events-none" />
 
       {/* Red ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-white-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <Spotlight />
 
@@ -83,7 +83,7 @@ export function Hero() {
           <Link href="/auth">
             <Button
               size="lg"
-              className="bg-red-500 text-white hover:bg-red-600 rounded-full px-8 h-12 text-base shadow-lg shadow-red-500/20 cursor-pointer"
+              className="bg-black-500 text-white hover:bg-red-600 rounded-full px-8 h-12 text-base shadow-lg shadow-red-500/20 cursor-pointer"
             >
               Start
               <ArrowRight className="ml-2 w-4 h-4" />

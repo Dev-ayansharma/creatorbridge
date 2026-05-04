@@ -30,7 +30,7 @@ export function Navbar() {
       >
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-red-500 flex items-center justify-center shadow-md shadow-red-500/30">
+          <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center shadow-md shadow-red-500/30">
             <span className="text-white font-bold text-sm">||</span>
           </div>
           <span className="font-semibold text-white hidden sm:block">
@@ -75,7 +75,7 @@ export function Navbar() {
           <Link href="/auth">
             <Button
               size="sm"
-              className="bg-red-500 text-white hover:bg-red-600 rounded-full px-4 shadow-md shadow-red-500/30"
+              className="bg-white-900 text-black hover:bg-white-600 rounded-full px-4 shadow-md shadow-red-500/30"
             >
               Get Started
             </Button>
