@@ -73,10 +73,8 @@ export default function GlobalNotFound() {
             {/* Description */}
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed mb-8">
               The page you're looking for doesn&pos;t exist or has been moved.
-              Let&pos;s get you back to your workspace.
+              Let&pos;get you back to your workspace.
             </p>
-
-            {/* CTA */}
             <Link
               href="/"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg  text-black text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
