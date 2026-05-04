@@ -1,6 +1,6 @@
-'use client'
+
 import type { Metadata } from 'next'
-import Link from 'next/link'
+
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -20,18 +20,14 @@ export default function GlobalNotFound() {
           {/* Soft center glow */}
           <div className="absolute w-[500px] h-[500px] bg-white/[0.03] blur-3xl rounded-full" />
 
-          {/* Brand */}
-          <Link
-            href="/dashboard"
-            className="fixed top-6 left-6 flex items-center gap-2 group"
-          >
+      
             <div className="w-8 h-8 rounded-md bg-black flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-sm">||</span>
             </div>
             <span className="text-sm font-medium text-zinc-200 group-hover:text-white transition">
               CreatorBridge
             </span>
-          </Link>
+      
 
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center text-center px-6">
@@ -75,13 +71,7 @@ export default function GlobalNotFound() {
               The page you're looking for doesn&pos;t exist or has been moved.
               Let&pos;get you back to your workspace.
             </p>
-            <Link
-              href="/"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg  text-black text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
-            >
-          
-              Back to Home
-            </Link>
+         
 
           </div>
         </div>
