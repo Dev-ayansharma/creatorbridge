@@ -10,7 +10,7 @@ export async function DELETE(req:Request) {
         const {searchParams} = new URL(req.url)
 
         const videoid = searchParams.get("video_id")
-        console.log("videoid",videoid)
+       
         const video = await Video.findById(videoid)
 
         if(!video){

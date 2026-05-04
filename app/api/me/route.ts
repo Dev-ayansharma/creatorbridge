@@ -8,7 +8,6 @@ export async function GET(req: NextRequest) {
 
   try {
     const token = req.cookies.get("token")?.value;
-    console.log(token,"token")
     if (!token) {
       return NextResponse.json({ success: false }, { status: 401 });
     }

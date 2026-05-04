@@ -77,12 +77,8 @@ export default function VerifyAccount() {
     <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden">
 
       {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.05),transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0, 0, 0, 0.05),transparent_40%)]" />
 
-      {/* Header */}
-      <div className="absolute top-6 left-6 text-xs text-white/70 tracking-wide">
-        CREATOR BRIDGE
-      </div>
 
       {/* Card */}
       <form

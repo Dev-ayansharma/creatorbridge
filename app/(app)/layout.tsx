@@ -17,8 +17,8 @@ export default function DashboardLayout({
       {/* Main Content */}
       <div
         style={{
-          marginLeft: COLLAPSED_W, // 👈 reserve space for sidebar
-          width: `calc(100% - ${COLLAPSED_W}px)`, // 👈 prevent overflow
+          marginLeft: COLLAPSED_W,  
+          width: `calc(100% - ${COLLAPSED_W}px)`, 
           minHeight: "100vh",
           overflowX: "hidden",
           

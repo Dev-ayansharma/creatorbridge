@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 
 const footerLinks = {
-  Product: ["Features", "Pricing",],
+  Product: ["Howitworks", "pricing",],
   Resources: ["Documentation"],
   Company: ["Contact"],
   Legal: [ "Licenses"],
@@ -26,8 +26,8 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
-                <span className="text-zinc-950 font-bold text-sm">||</span>
+              <div className="w-8 h-8 rounded-lg bg-zinc-950 flex items-center justify-center">
+                <span className="text-white font-bold text-sm">||</span>
               </div>
               <span className="font-semibold text-white">CreatorBridge</span>
             </a>
@@ -46,7 +46,7 @@ export function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">
+                    <a href={`#${link}`} className="text-sm text-zinc-500 hover:text-white transition-colors">
                       {link}
                     </a>
                   </li>
@@ -65,14 +65,14 @@ export function Footer() {
         >
           <p className="text-sm text-zinc-500">&copy; {new Date().getFullYear()} Apex, Inc. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">
-              Twitter
+            <a href="https://linkedin.com/in/imayansharma" target="_blank" className="text-sm text-zinc-500 hover:text-white transition-colors">
+              Linkedin
             </a>
-            <a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">
+            <a href="https://github.com/Dev-ayansharma" target="_blank" className="text-sm text-zinc-500 hover:text-white transition-colors">
               GitHub
             </a>
-            <a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">
-              Discord
+            <a href="https://meayan-sharma.vercel.app/" target="_blank" className="text-sm text-zinc-500 hover:text-white transition-colors">
+              Developer
             </a>
           </div>
         </motion.div>

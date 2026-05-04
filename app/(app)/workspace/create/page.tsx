@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -27,12 +28,12 @@ export default function CreateWorkspace() {
     const fetchEditors = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/alleditor");
-        const data = await res.json();
-        
-        if (data.success) {
-          setEditors(data.data.editors);
-          setFilteredEditors(data.data.editors);
+        const res = await axios.get("/api/alleditor");
+  
+        console.log(res.data)
+        if (res.data.success) {
+          setEditors(res.data.data.editors);
+          setFilteredEditors(res.data.data.editors);
         }
       } catch (err) {
         console.error(err);
@@ -63,24 +64,32 @@ export default function CreateWorkspace() {
   }, []);
 
 
-  const handleSubmit = async () => {
-    if (!name || !selectedEditor) return;
+const handleSubmit = async () => {
+  if (!name || !selectedEditor) return;
 
-    await fetch("/api/workspace/create", {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        editorid: selectedEditor._id,
-      }),
+  try {
+    const res = await axios.post("/api/workspace/create", {
+      name,
+      editorid: selectedEditor._id,
     });
 
-   
-    setName("");
-    setSelectedEditor(null);
-    toast.success("the worspace is created")
-    router.push("/workspace")
-    
-  };
+    if (res.data.success) {
+      setName("");
+      setSelectedEditor(null);
+
+      toast.success("Workspace created successfully 🚀");
+      router.push("/workspace");
+    } else {
+      toast.error("Failed to create workspace");
+    }
+
+  } catch (error: any) {
+    console.error(error);
+    toast.error(
+      error?.response?.data?.message || "Something went wrong"
+    );
+  }
+};
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-10">

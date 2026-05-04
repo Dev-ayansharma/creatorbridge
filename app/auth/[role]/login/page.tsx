@@ -149,15 +149,15 @@ export default function LogIn() {
         <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden">
     
           {/* Background */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.06),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgb(0, 0, 0),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
     
           <div className="relative z-10 grid md:grid-cols-2 gap-20 w-full max-w-6xl px-6">
     
             {/* Left */}
             <div className="flex flex-col justify-center">
               <a href="#" className="flex flex-row items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
-                  <span className="text-zinc-950 font-bold text-lg">||</span>
+                <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">||</span>
                 </div>
                 <span className="font-semibold text-white text-lg ">CreatorBridge</span>
               </a>
@@ -222,7 +222,7 @@ export default function LogIn() {
                 </button>
     <Link href={'/auth/editor/sign-up'}>
                 <p className="text-center text-xs text-white/40">
-                  ALREADY SIGNED-IN
+                  Not Registerd Yet? Sign up -
                 </p>
     </Link>
               </form>

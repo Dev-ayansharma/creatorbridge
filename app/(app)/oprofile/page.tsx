@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { Pencil } from "lucide-react";
+
 import { useEffect, useState } from "react";
 
 export default function ProfilePage() {
@@ -70,13 +70,7 @@ export default function ProfilePage() {
               </h2>
             </div>
 
-            {/* OPTIONAL EXTRA FIELD (you can remove if not needed) */}
-            <div className="bg-black/30 border border-white/5 rounded-lg p-3">
-              <p className="text-xs text-white/40 mb-1">USER ID</p>
-              <p className="text-sm text-white/80 break-all">
-                {profile?._id || "N/A"}
-              </p>
-            </div>
+      
 
           </div>
         </div>

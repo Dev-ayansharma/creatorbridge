@@ -23,7 +23,7 @@ const plans = [
       "Unlimited uplaods",
       "Advanced analytics",
       "Priority support",
-      "100GB storage",
+      "More storage",
     ],
     cta: "Start Free Trial",
     highlighted: false,

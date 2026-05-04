@@ -16,8 +16,3 @@ export enum VideoStatus {
   UPLOADED = "UPLOADED",
 }
 
-export enum ApprovalDecision {
-  APPROVED = "APPROVED",
-  REJECTED = "REJECTED",
-  PENDING = "PENDING",
-}

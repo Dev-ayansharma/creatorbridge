@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Link from "next/link";
 
+
 type Props = {
   role: "EDITOR" | "OWNER";
   data: {
@@ -23,12 +24,14 @@ type Props = {
     privacystatus: "public" | "private";
     status: string;
     tags: string[];
+    
   };
 };
 
 export default function VideoDetailsPage({ data, role }: Props) {
   
    const router =  useRouter()
+   console.log(data)
   const container: React.CSSProperties = {
     maxWidth: 1000,
     margin: "0 auto",
@@ -79,7 +82,12 @@ export default function VideoDetailsPage({ data, role }: Props) {
     toast.success("the video is rejected ")}
    router.push("/odashboard")
   };
-  const handleAppraisal = () => console.log("Appraisal", data._id);
+  const handleAppraisal = () => {
+    router.push(`/video/appraisal/${data._id}`)
+  }
+  const handleReview = () =>{
+    router.push(`/video/review/${data._id}`)
+  }
 
   return (
     <div style={{ background: "#000000", minHeight: "100vh",}}>
@@ -247,15 +255,16 @@ export default function VideoDetailsPage({ data, role }: Props) {
         }} onClick={handleDelete}>
           Delete
         </button>
-
-        <button style={buttonStyle} onClick={handleReject}>
+      <Link href={`/video/review/${data._id}`}>
+        <button style={buttonStyle} >
           👁 See Review
-        </button>
+        </button></Link>
       </>
     )}
 
     {role === "OWNER"  && data.status === "PENDING" && (
       <>
+
       <button
         style={{
           ...buttonStyle,
@@ -274,7 +283,7 @@ export default function VideoDetailsPage({ data, role }: Props) {
           color: "#111",
           border: "none",
         }}
-        onClick={handleAppraisal}
+        onClick={handleReview}
       >
           Give review
       </button>

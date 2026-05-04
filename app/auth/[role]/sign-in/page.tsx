@@ -12,20 +12,27 @@ const handleGoogleLogin = () => {
 };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden">
 
       {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.05),transparent_40%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.04),transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0, 0, 0, 0.11),transparent_40%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.04),transparent_40%)]" />
 
-      {/* Title */}
-      <div className="text-center mb-12 relative z-10">
-        <h1 className="text-2xl font-semibold tracking-wide mb-2">
-          CREATOR BRIDGE
-        </h1>
-        <p className="text-xs text-white/40 tracking-widest">
-          THE ARCHITECTURAL VOID FOR CREATORS
-        </p>
-      </div>
+<a href="/" className="flex items-center gap-3 mb-12 group">
+  {/* Logo */}
+  <div className="w-9 h-9 rounded-xl bg-black  flex items-center justify-center shadow-md">
+    <span className="text-white font-bold text-sm tracking-wider">||</span>
+  </div>
+
+  {/* Brand */}
+  <div className="flex flex-col leading-tight">
+    <span className="text-white font-semibold text-lg tracking-tight group-hover:text-white/80 transition">
+      CreatorBridge
+    </span>
+    <span className="text-[10px] text-white/40 tracking-widest uppercase">
+      Creator Workflow Platform
+    </span>
+  </div>
+</a>
 
       {/* Card */}
       <div className="relative z-10 w-full max-w-md bg-black/70 border border-white/5 rounded-2xl px-10 py-12 backdrop-blur-xl shadow-[0_0_80px_rgba(255,255,255,0.04)] text-center">
@@ -45,7 +52,7 @@ const handleGoogleLogin = () => {
         {/* ✅ FIXED BUTTON */}
         <button
           onClick={handleGoogleLogin}
-          className="w-full bg-white text-black py-4 rounded-md flex items-center justify-center gap-3 text-sm font-medium hover:opacity-90 transition shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
+          className="w-full bg-white text-black py-4 rounded-md flex items-center justify-center gap-3 text-sm font-medium hover:opacity-90 transition shadow-[0_10px_30px_rgba(255,255,255,0.1)] cursor-pointer"
         >
           <span className="w-5 h-5 bg-white rounded-full flex items-center justify-center text-xs">
             G

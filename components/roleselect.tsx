@@ -9,7 +9,7 @@ export default function Roleselect() {
     <>
 
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.08),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgb(0, 0, 0),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
 
       {/* Main */}
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
@@ -20,7 +20,7 @@ export default function Roleselect() {
             Choose Your Role
           </h2>
           <p className="text-white/60 text-sm max-w-md mx-auto">
-            Define your workspace permissions and access level within the Project Alpha ecosystem.
+            Define your workspace permissions and access level within the Project.
           </p>
         </div>
 
@@ -108,11 +108,11 @@ export default function Roleselect() {
         {/* Buttons */}
         <div className="mt-14 flex flex-col items-center gap-4">
           <Link onClick={()=>setRole(role)} href={`/${role === "owner" ? `auth/${role}/sign-in` : `auth/${role}/sign-up`}`}>
-          <button className="bg-white text-black px-8 py-3 rounded-md text-xs tracking-widest font-semibold hover:opacity-90 active:scale-95 transition">
+          <button className="bg-white text-black px-8 py-3 rounded-md text-xs tracking-widest font-semibold hover:opacity-90 active:scale-95 transition cursor-pointer">
             CONTINUE TO DASHBOARD
           </button></Link>
        <Link href={'/'}>
-          <button className="text-white/50 text-xs tracking-widest hover:text-white transition">
+          <button className="text-white/50 text-xs tracking-widest hover:text-white transition cursor-pointer">
             BACK TO HOME PAGE
           </button></Link>
         </div>
