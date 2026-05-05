@@ -113,16 +113,24 @@ export function Navbar() {
 
             <hr className="border-zinc-800 my-2" />
 
+            <Link href="/auth">
             <Button
               variant="ghost"
-              className="justify-start text-zinc-400 hover:text-white"
+              size="sm"
+              className="text-zinc-400 hover:text-white hover:bg-zinc-800"
             >
               Sign In
             </Button>
+          </Link>
 
-            <Button className="bg-red-500 text-white hover:bg-red-600 rounded-full shadow-md shadow-red-500/30 cursor-pointer">
+          <Link href="/auth">
+            <Button
+              size="sm"
+              className="bg-white text-black hover:bg-white-600 rounded-full px-4 "
+            >
               Get Started
             </Button>
+          </Link>
           </div>
         </motion.div>
       )}

@@ -9,10 +9,10 @@ export default function Roleselect() {
     <>
 
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgb(0, 0, 0),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
+      <div className="absolute inset-0  bg-[radial-gradient(circle_at_20%_30%,rgb(0, 0, 0),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.05),transparent_40%)]" />
 
       {/* Main */}
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 ">
 
         {/* Title */}
         <div className="text-center mb-16">

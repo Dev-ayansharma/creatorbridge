@@ -30,13 +30,14 @@ while you stay in full control of your YouTube channel.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/auth">
           <Button
             size="lg"
             className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-full px-8 h-14 text-base font-medium shadow-lg shadow-white/20"
           >
             Get Started
             <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          </Button></Link>
           <Link href="#Howitworks">
           <Button
             variant="outline"
