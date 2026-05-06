@@ -6,7 +6,7 @@ import Link from "next/link"
 const footerLinks = {
   Resources: ["Documentation"],
   Company: ["Contact"],
-  Legal: ["Terms","Privacy"],
+  Legal: ["Terms","privacy"],
 }
 
 export function Footer() {
