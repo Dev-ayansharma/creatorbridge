@@ -35,6 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <meta name="google-site-verification" content="AWA3VK7A3lmfB0JbdMwbcnbw7LOCwoXax8infXnoCUA" />
       <body className={`${manrope.variable} ${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}>
         <div className="noise-overlay" aria-hidden="true" />
         <AuthProvider>
