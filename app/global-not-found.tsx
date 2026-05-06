@@ -21,12 +21,6 @@ export default function GlobalNotFound() {
           <div className="absolute w-[500px] h-[500px] bg-white/[0.03] blur-3xl rounded-full" />
 
       
-            <div className="w-8 h-8 rounded-md bg-black flex items-center justify-center shadow-sm">
-              <span className="text-white font-bold text-sm">||</span>
-            </div>
-            <span className="text-sm font-medium text-zinc-200 group-hover:text-white transition">
-              CreatorBridge
-            </span>
       
 
           {/* Content */}
@@ -63,7 +57,7 @@ export default function GlobalNotFound() {
                 fontSize: "clamp(24px, 3.5vw, 32px)",
               }}
             >
-              You&pos;ve gone off track.
+              Youve gone off track.
             </h2>
 
             {/* Description */}

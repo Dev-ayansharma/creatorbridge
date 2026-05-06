@@ -2,12 +2,11 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-
+import Link from "next/link"
 const footerLinks = {
-  Product: ["Howitworks", "pricing",],
   Resources: ["Documentation"],
   Company: ["Contact"],
-  Legal: [ "Licenses"],
+  Legal: ["Terms","Privacy"],
 }
 
 export function Footer() {
@@ -45,15 +44,20 @@ export function Footer() {
               <h4 className="text-sm font-semibold text-white mb-4">{title}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href={`#${link}`} className="text-sm text-zinc-500 hover:text-white transition-colors">
-                      {link}
-                    </a>
-                  </li>
+                <li key={link}>
+  <Link 
+    href={`${link}`} 
+    className="text-sm text-zinc-500 hover:text-white transition-colors"
+  >
+    {link}
+  </Link>
+</li>
                 ))}
               </ul>
             </div>
           ))}
+
+          
         </motion.div>
 
         {/* Bottom */}
